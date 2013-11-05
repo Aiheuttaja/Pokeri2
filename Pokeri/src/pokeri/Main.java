@@ -8,7 +8,7 @@ package pokeri;
  *
  * @author Janne
  */
-public class Pokeri {
+public class Main {
 
     /**
      * @param args the command line arguments
