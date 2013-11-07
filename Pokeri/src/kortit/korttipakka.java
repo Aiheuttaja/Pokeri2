@@ -6,24 +6,28 @@ package kortit;
 
 import java.util.ArrayList;
 
-
 public class korttipakka {
+
     private ArrayList<kortti> pakka;
-    
-    public korttipakka (){
-        //Luodaan tarvittavat kortit lisaaKortti-metodia käyttäen.
-    }
-    
-    public void lisaaKortti(kortti kortti){
-        this.pakka.add(kortti);
-    }
-    
-    public void poistaKortti(kortti kortti){
-        String arvo = kortti.haeArvo();
-        for (kortti x:pakka){
-            if (x.haeArvo().equals(arvo)){
-                pakka.remove(x);
+
+    public korttipakka() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; i < 13; j++) {
+                kortti kortti = new kortti(i, j);
+                lisaaKortti(kortti);
             }
         }
+    }
+
+    public void lisaaKortti(kortti kortti) {
+        this.pakka.add(kortti);
+    }
+
+    public void poistaKortti(kortti kortti) {
+        this.pakka.remove(kortti);
+    }
+    
+    public int paljonkoKortteja(){
+        return this.pakka.size();
     }
 }
