@@ -16,8 +16,10 @@ public class korttipakka {
         
         this.pakka = new ArrayList<kortti>();
         
+        //Luodaan kortit sisäkkäisillä for-silmukoilla, joissa jokaista neljää maata kohden luodaan 13 korttia.
+        
         for (int j = 0; j < 4; j++) {
-            for (int i = 0; i < 13; i++) {
+            for (int i = 0; i < 13; i++) {           
                 
                 pakka.add(new kortti(j,i));
                 
@@ -25,10 +27,12 @@ public class korttipakka {
         }
     }
 
+    //Lisätään kortti pakkaan (kun jaetaan uusi käsi yms.)
     public void lisaaKortti(kortti kortti) {
         this.pakka.add(kortti);
     }
 
+    //Otetaan pakan päällimmäinen (array listin indeksissä nolla sijaitseva) kortti.
     public kortti otaPaallimmaisinKortti() {
         kortti k;
         k=this.pakka.get(0);
@@ -36,14 +40,22 @@ public class korttipakka {
         return k;
     }
 
+    //Laskee pakassa olevien korttien määrän, lähinnä testausta varten.
     public int paljonkoKortteja() {
         return this.pakka.size();
     }
     
+    //Listaa pakassa olevat kortit, lähinnä testausta varten.
+    public ArrayList<kortti> mitkaKortit(){
+        return this.pakka;
+    }
+    
+    //Sekoittaa pakan.
     public void sekoitaPakka(){
         Collections.shuffle(pakka);
     }
     
+    //Tulostetaan pakassa olevat kortit siinä järjestyksessä kuin ne ovat.
     @Override
     public String toString(){
         String kortit="";

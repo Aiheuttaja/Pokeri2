@@ -22,6 +22,9 @@ public class kasi {
 }
     
     public void otaKateen(kortti kortti){
+        if(this.käsi.size()>4){
+            return;
+        }
         this.käsi.add(kortti);
     }
     
@@ -46,7 +49,7 @@ public class kasi {
         String ilmoitus="";
         
         for(kortti k:this.käsi){
-            ilmoitus = ilmoitus + (k.toString() + "\n");
+            ilmoitus = ilmoitus + (k.toString() + " ");
         }
         
         return ilmoitus;

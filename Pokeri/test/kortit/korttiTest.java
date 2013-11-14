@@ -52,7 +52,7 @@ public class korttiTest {
     
     @Test
     public void tulostuuOikein(){
-        assertEquals("herttaässä",herttaAssa.toString());
+        assertEquals("♥A",herttaAssa.toString());
     }
     
 }

@@ -19,8 +19,9 @@ public class Main {
      */
     public static void main(String[] args) {
         korttipakka pakka = new korttipakka();
+
         kasi käsi = new kasi();
-        jakaja joni = new jakaja();        
+        jakaja joni = new jakaja();
         joni.jaaKasi(käsi, pakka);
         System.out.println(käsi.toString());
     }

@@ -35,9 +35,9 @@ public class kasiTest {
     
     @Before
     public void setUp() {
-        kasi käsi = new kasi();
-        jakaja jakaja = new jakaja();
-        korttipakka pakka = new korttipakka();
+        käsi = new kasi();
+        jakaja = new jakaja();
+        pakka = new korttipakka();
     }
     
     @After
@@ -48,5 +48,16 @@ public class kasiTest {
     public void jaonJalkeenKadessaViisiKorttia(){
         jakaja.jaaKasi(käsi, pakka);
         assertEquals(5,käsi.montakoKorttia());
+    }
+    
+    @Test
+    public void tulostuuOikein(){
+        jakaja.jaaKortti(käsi, pakka);
+        jakaja.jaaKortti(käsi, pakka);
+        jakaja.jaaKortti(käsi, pakka);
+        jakaja.jaaKortti(käsi, pakka);
+        jakaja.jaaKortti(käsi, pakka);
+        
+        assertEquals("♥A ♥2 ♥3 ♥4 ♥5 ",käsi.toString());
     }
 }

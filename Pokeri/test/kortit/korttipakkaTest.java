@@ -45,5 +45,24 @@ public class korttipakkaTest {
         
     }
     
+    @Test
+    public void poistoToimii(){        
+        //Poistetaan pakan päällimmäinen kortti, ♥A eli kortti, jonka maa on 0 ja arvo on 0.
+        pakka.otaPaallimmaisinKortti();
+        boolean olikoSiella=false;
+        
+        //Tarkistetaan, onko pakassa sellaista korttia, jolla on maa 0 ja arvo 0, eli ♥A.
+        for(kortti k:pakka.mitkaKortit()){
+            if(k.haeMaa() == 0){
+                if(k.haeArvo() == 0){
+                    olikoSiella=true;
+                }
+            }
+        }
+        
+        assertEquals(false,olikoSiella);
+        
+    }
+    
     
 }
