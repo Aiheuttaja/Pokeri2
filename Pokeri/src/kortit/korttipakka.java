@@ -29,8 +29,11 @@ public class korttipakka {
         this.pakka.add(kortti);
     }
 
-    public void poistaKortti(kortti kortti) {
-        this.pakka.remove(kortti);
+    public kortti otaPaallimmaisinKortti() {
+        kortti k;
+        k=this.pakka.get(0);
+        this.pakka.remove(0);
+        return k;
     }
 
     public int paljonkoKortteja() {

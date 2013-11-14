@@ -7,9 +7,48 @@ package kortit;
 import java.util.*;
 
 public class kasi {
-    private kortti[] käsi;
+    private ArrayList<kortti> käsi;
+    private boolean[] lukitut;
     
     public kasi(){
-        this.käsi=new kortti[5];
+        this.käsi=new ArrayList<kortti>();
+        this.lukitut=new boolean[5];
+    }
+    
+    public void nollaus(){
+        for(boolean b:this.lukitut){
+            b=false;
+        }
+}
+    
+    public void otaKateen(kortti kortti){
+        this.käsi.add(kortti);
+    }
+    
+    public void poistaKadesta(int i){
+        käsi.remove(käsi.get(i));
+    }
+    
+    public void lukitseKortti(int i){
+        if(i>4){
+            return;
+        }
+        lukitut[i] = true;
+    }
+    
+    public int montakoKorttia(){
+        return this.käsi.size();
+    }
+    
+    @Override
+    public String toString(){
+        
+        String ilmoitus="";
+        
+        for(kortti k:this.käsi){
+            ilmoitus = ilmoitus + (k.toString() + "\n");
+        }
+        
+        return ilmoitus;
     }
 }

@@ -4,6 +4,7 @@
  */
 package kortit;
 
+import java.util.*;
 /**
  *
  * @author Janne
@@ -12,8 +13,8 @@ public class kortti {
 
     private int arvo;
     private int maa;
-    public final String[] maat = {"hertta","ruutu","pata","risti"};
-    public final String[] arvot = {"ässä","kakkonen","kolmonen","nelonen","vitonen","kutonen","seiska","kasi","ysi","kymppi","jätkä","kuningatar","kuningas"};
+    public final String[] maat = {"♥","♦","♠","♣"};
+    public final String[] arvot = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
 
     public kortti(int maa, int arvo) {
         this.arvo=arvo;
