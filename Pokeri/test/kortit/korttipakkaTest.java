@@ -42,5 +42,8 @@ public class korttipakkaTest {
     @Test
     public void oikeaMaaraKortteja(){
         assertEquals(52,pakka.paljonkoKortteja());
+        
     }
+    
+    
 }

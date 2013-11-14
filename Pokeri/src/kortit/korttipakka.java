@@ -2,19 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 package kortit;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class korttipakka {
 
     private ArrayList<kortti> pakka;
 
     public korttipakka() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; i < 13; j++) {
-                kortti kortti = new kortti(i, j);
-                lisaaKortti(kortti);
+        
+        this.pakka = new ArrayList<kortti>();
+        
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 13; i++) {
+                
+                pakka.add(new kortti(j,i));
+                
             }
         }
     }
@@ -26,8 +32,22 @@ public class korttipakka {
     public void poistaKortti(kortti kortti) {
         this.pakka.remove(kortti);
     }
-    
-    public int paljonkoKortteja(){
+
+    public int paljonkoKortteja() {
         return this.pakka.size();
+    }
+    
+    public void sekoitaPakka(){
+        Collections.shuffle(pakka);
+    }
+    
+    @Override
+    public String toString(){
+        String kortit="";
+        for(kortti k:pakka){
+            kortit=(kortit + "\n" + k.toString());
+            
+        }
+        return kortit;
     }
 }
