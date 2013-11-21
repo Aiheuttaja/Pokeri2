@@ -4,9 +4,10 @@
  */
 package pokeri;
 
-import kortit.kasi;
-import kortit.korttipakka;
-import voittovalinta.jakaja;
+import kayttoliittyma.Pokeripeli;
+import kortit.Kasi;
+import kortit.Korttipakka;
+import voittovalinta.Jakaja;
 
 /**
  *
@@ -18,11 +19,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        korttipakka pakka = new korttipakka();
-
-        kasi käsi = new kasi();
-        jakaja joni = new jakaja();
-        joni.jaaKasi(käsi, pakka);
-        System.out.println(käsi.toString());
+        Pokeripeli pokeripeli = new Pokeripeli();
+        pokeripeli.pelaa();
     }
 }

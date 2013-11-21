@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
  *
  * @author Janne
  */
-public class korttipakkaTest {
+public class KorttipakkaTest {
     
-    korttipakka pakka;
+    Korttipakka pakka;
     
-    public korttipakkaTest() {
+    public KorttipakkaTest() {
     }
     
     @BeforeClass
@@ -32,7 +32,7 @@ public class korttipakkaTest {
     
     @Before
     public void setUp() {
-        pakka=new korttipakka();
+        pakka=new Korttipakka();
     }
     
     @After
@@ -47,12 +47,12 @@ public class korttipakkaTest {
     
     @Test
     public void poistoToimii(){        
-        //Poistetaan pakan päällimmäinen kortti, ♥A eli kortti, jonka maa on 0 ja arvo on 0.
-        pakka.otaPaallimmaisinKortti();
+        //Poistetaan pakan päällimmäinen Kortti, ♥A eli Kortti, jonka maa on 0 ja arvo on 0.
+        pakka.PaallimmaisinKortti();
         boolean olikoSiella=false;
         
         //Tarkistetaan, onko pakassa sellaista korttia, jolla on maa 0 ja arvo 0, eli ♥A.
-        for(kortti k:pakka.mitkaKortit()){
+        for(Kortti k:pakka.mitkaKortit()){
             if(k.haeMaa() == 0){
                 if(k.haeArvo() == 0){
                     olikoSiella=true;

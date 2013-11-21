@@ -6,19 +6,16 @@ package kortit;
 
 import java.util.*;
 
-public class kasi {
+public class Kasi {
 
-    private ArrayList<kortti> käsi;
-    private boolean[] lukitut;
+    private ArrayList<Kortti> käsi;
 
     /**
-     * Luodaan uusi arraylist kädessä oleville korteille, ja viisipaikkainen
-     * boolean-jono kortin lukituksen merkitsemistä varten.
+     * Luodaan uusi arraylist kädessä oleville korteille
      *
      */
-    public kasi() {
+    public Kasi() {
         this.käsi = new ArrayList<>();
-        this.lukitut = new boolean[5];
     }
 
     /**
@@ -26,17 +23,17 @@ public class kasi {
      *
      */
     public void nollaus() {
-        for (boolean b : this.lukitut) {
-            b = false;
+        for (Kortti k:this.käsi){
+            k.avaa();
         }
     }
 
     /**
      * Lisää jakajan jakaman kortin käteen
      *
-     * @param kortti kortti, jonka jakaja on antanut
+     * @param Kortti Kortti, jonka jakaja on antanut
      */
-    public void otaKateen(kortti kortti) {
+    public void otaKateen(Kortti kortti) {
         if (this.käsi.size() > 4) {
             return;
         }
@@ -49,11 +46,11 @@ public class kasi {
      * @param i sen kortin numero (indeksi listassa), joka halutaan poistaa
      */
     public void poistaKadesta(int i) {
-        käsi.remove(käsi.get(i));
+        this.käsi.remove(this.käsi.get(i));
     }
 
     /**
-     * Lukitaan kortti, jotta sitä ei voi sekoittaa takaisin pakkaan uusia
+     * Lukitaan Kortti, jotta sitä ei voi sekoittaa takaisin pakkaan uusia
      * korttia jaettaessa.
      *
      * @param i lukittavan kortin indeksi. varmistetaan, ettei ole yli 4
@@ -62,7 +59,18 @@ public class kasi {
         if (i > 4) {
             return;
         }
-        lukitut[i] = true;
+        this.käsi.get(i).lukitse();
+    }
+    
+    /**
+     * Poistetaan kortin lukitus.
+     * @param i sen kortin paikka (indeksi) kädessä, jonka lukitus halutaan poistaa
+     */
+    public void avaaKortti(int i) {
+        if (i > 4){
+            return;
+        }
+        this.käsi.get(i).avaa();
     }
 
     /**
@@ -70,12 +78,18 @@ public class kasi {
      *
      * @return kädessä olevien korttien lista
      */
-    public ArrayList<kortti> listaaKortit() {
+    public ArrayList<Kortti> listaaKortit() {
         return this.käsi;
     }
     
-    public kortti katsoKortti(int i){
-        return käsi.get(i);
+    /**
+     * palauttaa kädessä indeksissä i sijaitsevan kortin
+     * @param i sen kortin indeksi, joka halutaan näyttää
+     * @return kortti, joka sijaitsee käden indeksissä i
+     */
+    
+    public Kortti katsoKortti(int i){
+        return this.käsi.get(i);
     }
 
     /**
@@ -89,7 +103,7 @@ public class kasi {
 
         String ilmoitus = "";
 
-        for (kortti k : this.käsi) {
+        for (Kortti k : this.käsi) {
             ilmoitus = ilmoitus + (k.toString() + " ");
         }
 

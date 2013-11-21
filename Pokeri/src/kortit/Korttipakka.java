@@ -6,15 +6,15 @@ package kortit;
 
 import java.util.*;
 
-public class korttipakka {
+public class Korttipakka {
 
-    private ArrayList<kortti> pakka;
+    private ArrayList<Kortti> pakka;
 
     /**
      * Luodaan pakka ja sen kortit sisäkkäisillä for-silmukoilla, joissa jokaista neljää
      * maata kohden luodaan 13 korttia.
      */
-    public korttipakka() {
+    public Korttipakka() {
 
         this.pakka = new ArrayList<>();
 
@@ -22,29 +22,29 @@ public class korttipakka {
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 13; i++) {
 
-                pakka.add(new kortti(j, i));
+                pakka.add(new Kortti(j, i));
 
             }
         }
     }
 
     /**
-     * Lisätään kortti pakkaan (kun jaetaan uusi käsi yms.)
+     * Lisätään Kortti pakkaan (kun jaetaan uusi käsi yms.)
      *
-     * @param kortti jakajan antama kortti
+     * @param Kortti jakajan antama Kortti
      */
-    public void lisaaKortti(kortti kortti) {
+    public void lisaaKortti(Kortti kortti) {
         this.pakka.add(kortti);
     }
 
     /**
      * Otetaan pakan päällimmäinen (array listin indeksissä nolla sijaitseva)
-     * kortti.
+     * Kortti.
      *
-     * @return kortti, joka sijaitsee pakan indeksissä 0
+     * @return Kortti, joka sijaitsee pakan indeksissä 0
      */
-    public kortti otaPaallimmaisinKortti() {
-        kortti k;
+    public Kortti PaallimmaisinKortti() {
+        Kortti k;
         k = this.pakka.get(0);
         this.pakka.remove(0);
         return k;
@@ -62,7 +62,7 @@ public class korttipakka {
     /**
      * Listaa pakassa olevat kortit, lähinnä testausta varten.
      */
-    public ArrayList<kortti> mitkaKortit() {
+    public ArrayList<Kortti> mitkaKortit() {
         return this.pakka;
     }
 
@@ -79,7 +79,7 @@ public class korttipakka {
     @Override
     public String toString() {
         String kortit = "";
-        for (kortti k : pakka) {
+        for (Kortti k : pakka) {
             kortit = (kortit + "\n" + k.toString());
 
         }

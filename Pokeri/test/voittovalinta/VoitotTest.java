@@ -1,9 +1,8 @@
-package kortit;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package voittovalinta;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,11 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author Janne
  */
-public class korttiTest {
+public class VoitotTest {
     
-    kortti herttaAssa;
-    
-    public korttiTest() {
+    public VoitotTest() {
     }
     
     @BeforeClass
@@ -33,26 +30,14 @@ public class korttiTest {
     
     @Before
     public void setUp() {
-        herttaAssa = new kortti(0,0);
     }
     
     @After
     public void tearDown() {
     }
-    
-    @Test
-    public void arvoOikein(){
-        assertEquals(0,herttaAssa.haeArvo());        
-    }
-    
-    @Test
-    public void maaOikein(){
-        assertEquals(0,herttaAssa.haeMaa());
-    }
-    
-    @Test
-    public void tulostuuOikein(){
-        assertEquals("♥A",herttaAssa.toString());
-    }
-    
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 }

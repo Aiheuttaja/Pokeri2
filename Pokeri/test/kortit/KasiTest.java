@@ -10,19 +10,19 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import voittovalinta.jakaja;
+import voittovalinta.Jakaja;
 
 /**
  *
  * @author jilli
  */
-public class kasiTest {
+public class KasiTest {
     
-    kasi käsi;
-    jakaja jakaja;
-    korttipakka pakka;
+    Kasi käsi;
+    Jakaja jakaja;
+    Korttipakka pakka;
     
-    public kasiTest() {
+    public KasiTest() {
     }
     
     @BeforeClass
@@ -35,9 +35,10 @@ public class kasiTest {
     
     @Before
     public void setUp() {
-        käsi = new kasi();
-        jakaja = new jakaja();
-        pakka = new korttipakka();
+        käsi = new Kasi();
+        jakaja = new Jakaja();
+        pakka = new Korttipakka();
+        jakaja.uusiKasi(käsi, pakka);
     }
     
     @After
@@ -46,18 +47,30 @@ public class kasiTest {
     
     @Test
     public void jaonJalkeenKadessaViisiKorttia(){
-        jakaja.jaaKasi(käsi, pakka);
+        
         assertEquals(5,käsi.listaaKortit().size());
     }
     
     @Test
     public void tulostuuOikein(){
-        jakaja.jaaKortti(käsi, pakka);
-        jakaja.jaaKortti(käsi, pakka);
-        jakaja.jaaKortti(käsi, pakka);
-        jakaja.jaaKortti(käsi, pakka);
-        jakaja.jaaKortti(käsi, pakka);
         
         assertEquals("♥2 ♥3 ♥4 ♥5 ♥6 ",käsi.toString());
+    }
+    
+    @Test
+    public void kunOtetaanKorttiPoisNiinKateenJaaNelja(){
+        käsi.poistaKadesta(0);
+        assertEquals(4,käsi.listaaKortit().size());
+    }
+    
+    @Test
+    public void lukittujaKorttejaEiPoisteta(){
+        for(Kortti g:käsi.listaaKortit()){
+            g.lukitse();
+        }
+        
+        jakaja.uusiKasi(käsi, pakka);
+        
+        assertEquals("♥2 ♥3 ♥4 ♥5 ♥6 ", käsi.toString());
     }
 }
