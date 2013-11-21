@@ -47,7 +47,7 @@ public class kasiTest {
     @Test
     public void jaonJalkeenKadessaViisiKorttia(){
         jakaja.jaaKasi(käsi, pakka);
-        assertEquals(5,käsi.montakoKorttia());
+        assertEquals(5,käsi.listaaKortit().size());
     }
     
     @Test
@@ -58,6 +58,6 @@ public class kasiTest {
         jakaja.jaaKortti(käsi, pakka);
         jakaja.jaaKortti(käsi, pakka);
         
-        assertEquals("♥A ♥2 ♥3 ♥4 ♥5 ",käsi.toString());
+        assertEquals("♥2 ♥3 ♥4 ♥5 ♥6 ",käsi.toString());
     }
 }
