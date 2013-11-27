@@ -6,8 +6,16 @@ package kortit;
 
 import java.util.*;
 
+/**
+ * Sisältää kädessä olevat viisi korttia ja niiden hallintaan liittyvät metodit,
+ * kuten kortin lukitseminen, kortin laittaminen pois pakkaan ja jakajan
+ * ojentaman kortin ottaminen käteen.
+ */
 public class Kasi {
 
+    /**
+     * Kädessä olevat kortit listana.
+     */
     private ArrayList<Kortti> käsi;
 
     /**
@@ -23,7 +31,7 @@ public class Kasi {
      *
      */
     public void nollaus() {
-        for (Kortti k:this.käsi){
+        for (Kortti k : this.käsi) {
             k.avaa();
         }
     }
@@ -61,13 +69,15 @@ public class Kasi {
         }
         this.käsi.get(i).lukitse();
     }
-    
+
     /**
      * Poistetaan kortin lukitus.
-     * @param i sen kortin paikka (indeksi) kädessä, jonka lukitus halutaan poistaa
+     *
+     * @param i sen kortin paikka (indeksi) kädessä, jonka lukitus halutaan
+     * poistaa
      */
     public void avaaKortti(int i) {
-        if (i > 4){
+        if (i > 4) {
             return;
         }
         this.käsi.get(i).avaa();
@@ -81,14 +91,14 @@ public class Kasi {
     public ArrayList<Kortti> listaaKortit() {
         return this.käsi;
     }
-    
+
     /**
      * palauttaa kädessä indeksissä i sijaitsevan kortin
+     *
      * @param i sen kortin indeksi, joka halutaan näyttää
      * @return kortti, joka sijaitsee käden indeksissä i
      */
-    
-    public Kortti katsoKortti(int i){
+    public Kortti katsoKortti(int i) {
         return this.käsi.get(i);
     }
 

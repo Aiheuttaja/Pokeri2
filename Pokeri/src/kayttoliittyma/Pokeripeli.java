@@ -24,7 +24,7 @@ public class Pokeripeli {
         this.jakaja = new Jakaja();
         this.pakka = new Korttipakka();
         this.käsi = new Kasi();
-        this.voitot = new Voitot();
+        this.voitot = new Voitot(1.0);
     }
     
     public void pelaa(){

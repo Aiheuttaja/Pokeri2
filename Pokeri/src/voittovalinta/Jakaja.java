@@ -10,8 +10,8 @@ import kortit.Kortti;
 import kortit.Korttipakka;
 
 /**
- *
- * @author Janne
+ * Toimii rajapintana pelaajan käden ja korttipakan välillä. Jakaa uudet kortit
+ * käteen ja sekoittaa vanhat kortit kädestä pakkaan.
  */
 public class Jakaja {
 
@@ -31,8 +31,11 @@ public class Jakaja {
      */
     public void uusiKasi(Kasi k, Korttipakka p) {
         int uudetKortit = 0;
-        if (!k.listaaKortit().isEmpty()) {
-
+        if (k.listaaKortit().isEmpty()) {
+            for (int i = 0; i < 5; i++) {
+                jaaKortti(k, p);
+            }
+        } else {
             for (Kortti g : k.listaaKortit()) {
                 if (g.olenkoLukittu() == false) {
                     sekoitaKorttiPakkaan(g, p);
@@ -42,19 +45,25 @@ public class Jakaja {
             for (int i = 0; i < uudetKortit; i++) {
                 jaaKortti(k, p);
             }
-
-
-        } else {
-            for (int i = 0; i < 5; i++) {
-                jaaKortti(k, p);
-            }
         }
     }
 
+    /**
+     * Jakaa käteen k pakan p päällimmäisen kortin.
+     *
+     * @param k käsi, johon jaetaan
+     * @param p korttipakka, josta uusi kortti jaetaan
+     */
     private void jaaKortti(Kasi k, Korttipakka p) {
         k.otaKateen(p.PaallimmaisinKortti());
     }
 
+    /**
+     * Sekoittaa kortin k korttipakkaan p.
+     *
+     * @param k kortti, joka sekoitetaan pakkaan
+     * @param p pakka, johon kortti sekoitetaan
+     */
     private void sekoitaKorttiPakkaan(Kortti k, Korttipakka p) {
         p.lisaaKortti(k);
         p.sekoitaPakka();

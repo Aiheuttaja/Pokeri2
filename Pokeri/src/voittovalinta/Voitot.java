@@ -18,11 +18,13 @@ public class Voitot {
     private double panos;
     private double viimeisinVoitto;
     private double voitot;
+    private double rahat;
 
-    public Voitot() {
+    public Voitot(double rahat) {
         this.panos = 0.2;
         this.viimeisinVoitto = 0.0;
         this.voitot = 0.0;
+        this.rahat = rahat;
     }
 
     /**
@@ -31,7 +33,8 @@ public class Voitot {
      * olevat kortit jonkin voittavan käden edellytykset.
      *
      * @param k käsi, jota halutaan tarkastella
-     * @return voittosumma, johon kyseinen voitto oikeuttaa käytössä olevalla panoksella.
+     * @return voittosumma, johon kyseinen voitto oikeuttaa käytössä olevalla
+     * panoksella.
      */
     public double tulikoVoittoa(Kasi k) {
         double voitto;
@@ -45,17 +48,17 @@ public class Voitot {
             this.viimeisinVoitto = voitto;
             this.voitot = +voitto;
             return voitto;
-        } else if (onkoNeloset(k)) {
-            voitto = (this.panos * 20);
-            this.viimeisinVoitto = voitto;
-            this.voitot = +voitto;
-            return voitto;
         } else if (onkoTaysKasi(k)) {
             voitto = (this.panos * 10);
             this.viimeisinVoitto = voitto;
             this.voitot = +voitto;
             return voitto;
-        } else if (onkoVari(k)) {
+        }else if (onkoNeloset(k)) {
+            voitto = (this.panos * 20);
+            this.viimeisinVoitto = voitto;
+            this.voitot = +voitto;
+            return voitto;
+        }  else if (onkoVari(k)) {
             voitto = (this.panos * 5);
             this.viimeisinVoitto = voitto;
             this.voitot = +voitto;
@@ -85,8 +88,24 @@ public class Voitot {
         if (this.panos == 1.0) {
             this.panos = 0.2;
         } else {
-            this.panos = +0.2;
+            this.panos = this.panos+0.2;
         }
+    }
+
+    public double viimeisinVoitto() {
+        return this.viimeisinVoitto;
+    }
+
+    public double voitot() {
+        return this.voitot;
+    }
+
+    public double panos() {
+        return this.panos;
+    }
+    
+    public double rahat(){
+        return this.rahat;
     }
 
     /**
@@ -243,7 +262,8 @@ public class Voitot {
     private boolean onkoKuningasVariSuora(Kasi k) {
         if (onkoVariSuora(k) == true) {
             for (Kortti g : k.listaaKortit()) {
-                if (g.haeArvo() != 13 | g.haeArvo() != 12 | g.haeArvo() != 11 | g.haeArvo() != 10 | g.haeArvo() != 9) {
+                if (g.haeArvo() == 12 || g.haeArvo() == 11 || g.haeArvo() == 10 || g.haeArvo() == 9 || g.haeArvo() == 8) {                    
+                }else{
                     return false;
                 }
             }

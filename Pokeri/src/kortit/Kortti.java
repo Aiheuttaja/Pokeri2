@@ -5,8 +5,10 @@
 package kortit;
 
 /**
+ * Sisältää yhdessä pelikortissa olevan oleellisen informaation, kuten kortin
+ * maan, arvon ja sen, onko kortti lukittu (voidaanko sen tilalle jakaa uutta
+ * kättä jaettaessa uusi kortti vai ei)
  *
- * @author Janne
  */
 public class Kortti {
 
@@ -54,12 +56,13 @@ public class Kortti {
     public void avaa() {
         this.lukitus = false;
     }
-    
+
     /**
      * kertoo, onko tämä kortti lukittu
+     *
      * @return true tai false, riippuen siitä onko kortti lukittu
      */
-    public boolean olenkoLukittu(){
+    public boolean olenkoLukittu() {
         return this.lukitus;
     }
 

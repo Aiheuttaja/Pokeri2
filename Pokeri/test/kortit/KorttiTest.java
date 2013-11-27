@@ -61,4 +61,11 @@ public class KorttiTest {
         assertEquals(true,herttaAssa.olenkoLukittu());
     }
     
+    @Test
+    public void avausOikein(){
+        herttaAssa.lukitse();
+        herttaAssa.avaa();
+        assertEquals(false,herttaAssa.olenkoLukittu());
+    }
+    
 }

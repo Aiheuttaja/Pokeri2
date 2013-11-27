@@ -6,13 +6,19 @@ package kortit;
 
 import java.util.*;
 
+/**
+ *
+ * Korttipakka koostuu 52 kortti-oliosta, jotka luodaan korttipakan
+ * konstruktorissa. Sisältää myös metodit päällimmäisen kortin jakamiseen, pakan
+ * sekoittamiseen ja kortin lisäämiseen takaisin pakkaan
+ */
 public class Korttipakka {
 
     private ArrayList<Kortti> pakka;
 
     /**
-     * Luodaan pakka ja sen kortit sisäkkäisillä for-silmukoilla, joissa jokaista neljää
-     * maata kohden luodaan 13 korttia.
+     * Luodaan pakka ja sen kortit sisäkkäisillä for-silmukoilla, joissa
+     * jokaista neljää maata kohden luodaan 13 korttia.
      */
     public Korttipakka() {
 
@@ -75,6 +81,7 @@ public class Korttipakka {
 
     /**
      * Tulostetaan pakassa olevat kortit siinä järjestyksessä kuin ne ovat.
+     * (luultavasti tarpeeton metodi)
      */
     @Override
     public String toString() {
