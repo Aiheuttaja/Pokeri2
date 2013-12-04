@@ -6,6 +6,7 @@ package voittovalinta;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import kortit.Kasi;
 import kortit.Kortti;
 
@@ -53,12 +54,12 @@ public class Voitot {
             this.viimeisinVoitto = voitto;
             this.voitot = +voitto;
             return voitto;
-        }else if (onkoNeloset(k)) {
+        } else if (onkoNeloset(k)) {
             voitto = (this.panos * 20);
             this.viimeisinVoitto = voitto;
             this.voitot = +voitto;
             return voitto;
-        }  else if (onkoVari(k)) {
+        } else if (onkoVari(k)) {
             voitto = (this.panos * 5);
             this.viimeisinVoitto = voitto;
             this.voitot = +voitto;
@@ -88,7 +89,7 @@ public class Voitot {
         if (this.panos == 1.0) {
             this.panos = 0.2;
         } else {
-            this.panos = this.panos+0.2;
+            this.panos = this.panos + 0.2;
         }
     }
 
@@ -103,9 +104,13 @@ public class Voitot {
     public double panos() {
         return this.panos;
     }
-    
-    public double rahat(){
+
+    public double rahat() {
         return this.rahat;
+    }
+    
+    public void lisaaRahaa(double rahat){
+        this.rahat+=rahat;
     }
 
     /**
@@ -149,25 +154,37 @@ public class Voitot {
     }
 
     /**
-     * Testaa, onko kädessä värin muodostavat kortit, löytyykö kädestä sekä
-     * kolmoset, että kahdesta jäljellä olevasta kortista pari.
+     * Testaa, onko kädessä täyskäden muodostavat kortit, eli löytyykö kädestä
+     * sekä kolmoset, että kahdesta jäljellä olevasta kortista pari.
      *
      * @param k Kasi, jota halutaan tarkastella.
      * @return true tai false riippuen siitä, oliko kädessä tämä voitto.
      */
     private boolean onkoTaysKasi(Kasi k) {
-        ArrayList<Integer> arvot = new ArrayList();
-        if (onkoKolmoset(k) == true) {
-            for (Kortti g : k.listaaKortit()) {
-                if (!arvot.contains(g.haeArvo())) {
-                    arvot.add(g.haeArvo());
-                }
+        HashMap<Integer, Integer> arvot = new HashMap<>();
+        ArrayList<Integer> maarat = new ArrayList<>();
+        int apu;
+        for(Kortti g:k.listaaKortit()){
+            if(!arvot.containsKey(g.haeArvo())){
+                arvot.put(g.haeArvo(), 1);
+            }else{
+                apu=arvot.get(g.haeArvo());
+                arvot.put(g.haeArvo(),(apu+1));
+            }            
+        }
+        if (arvot.size() == 2) {
+            for (int arvo : arvot.values()) {
+                maarat.add(arvo);
             }
-            if (arvot.size() == 2) {
-                return true;
+            Collections.sort(maarat);
+            if (maarat.get(0) == 2) {
+                if (maarat.get(1) == 3) {
+                    return true;
+                }
             }
         }
         return false;
+        
     }
 
     /**
@@ -177,19 +194,25 @@ public class Voitot {
      * @return true tai false riippuen siitä, oliko kädessä tämä voitto.
      */
     private boolean onkoKolmoset(Kasi k) {
-        ArrayList<Integer> arvot = new ArrayList();
+        HashMap<Integer, Integer> arvot = new HashMap<>();
+        ArrayList<Integer> maarat = new ArrayList<>();
+        int apu;
         for (Kortti g : k.listaaKortit()) {
-            for (int a : arvot) {
-                arvot.add(g.haeArvo());
+            if (!arvot.containsKey(g.haeArvo())) {
+                arvot.put(g.haeArvo(), 1);
+            } else {
+                apu = arvot.get(g.haeArvo());
+                arvot.put(g.haeArvo(), (apu + 1));
             }
         }
         if (arvot.size() == 3) {
-            Collections.sort(arvot);
-            for (int i = 0; i < 3; i++) {
-                if (arvot.get(i) == arvot.get(i + 1)) {
-                    if (arvot.get(i + 1) == arvot.get(i + 2)) {
-                        return true;
-                    }
+            for (int arvo : arvot.values()) {
+                maarat.add(arvo);
+            }
+            Collections.sort(maarat);
+            if (maarat.get(0) == 1) {
+                if (maarat.get(1) == 3) {
+                    return true;
                 }
             }
         }
@@ -217,28 +240,31 @@ public class Voitot {
         return false;
     }
 
+    private boolean onkoNeloset(Kasi k) {
+        HashMap<Integer, Integer> arvot = new HashMap<>();
+        int apu;
+        for (Kortti g : k.listaaKortit()) {
+            if (!arvot.containsKey(g.haeArvo())) {
+                arvot.put(g.haeArvo(), 1);
+            } else {
+                apu = arvot.get(g.haeArvo());
+                arvot.put(g.haeArvo(), (apu + 1));
+            }
+        }
+        for (int arvo : arvot.values()) {
+            if (arvo == 4) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Testaa, onko kädessä neljä samanarvoista korttia.
      *
      * @param k Kasi, jota halutaan tarkastella.
      * @return true tai false riippuen siitä, oliko kädessä tämä voitto.
      */
-    private boolean onkoNeloset(Kasi k) {
-        ArrayList<Integer> arvot = new ArrayList();
-        for (Kortti g : k.listaaKortit()) {
-            if (!arvot.contains(g.haeArvo())) {
-                arvot.add(g.haeArvo());
-            }
-        }
-        if (arvot.size() == 2) {
-            return true;
-        }
-
-
-
-        return false;
-    }
-
     /**
      * Testaa, onko kädessä värisuora, eli sekä väri, että suora
      *
@@ -262,8 +288,8 @@ public class Voitot {
     private boolean onkoKuningasVariSuora(Kasi k) {
         if (onkoVariSuora(k) == true) {
             for (Kortti g : k.listaaKortit()) {
-                if (g.haeArvo() == 12 || g.haeArvo() == 11 || g.haeArvo() == 10 || g.haeArvo() == 9 || g.haeArvo() == 8) {                    
-                }else{
+                if (g.haeArvo() == 12 || g.haeArvo() == 11 || g.haeArvo() == 10 || g.haeArvo() == 9 || g.haeArvo() == 8) {
+                } else {
                     return false;
                 }
             }

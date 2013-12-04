@@ -56,6 +56,10 @@ public class Kasi {
     public void poistaKadesta(int i) {
         this.käsi.remove(this.käsi.get(i));
     }
+    
+    public void poistaKortti(Kortti k){
+        this.käsi.remove(k);
+    }
 
     /**
      * Lukitaan Kortti, jotta sitä ei voi sekoittaa takaisin pakkaan uusia

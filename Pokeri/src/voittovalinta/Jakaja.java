@@ -30,6 +30,7 @@ public class Jakaja {
      * @param p pakka, josta jaetaan
      */
     public void uusiKasi(Kasi k, Korttipakka p) {
+        ArrayList<Kortti> poistettavat = new ArrayList<>();
         int uudetKortit = 0;
         if (k.listaaKortit().isEmpty()) {
             for (int i = 0; i < 5; i++) {
@@ -38,12 +39,17 @@ public class Jakaja {
         } else {
             for (Kortti g : k.listaaKortit()) {
                 if (g.olenkoLukittu() == false) {
-                    sekoitaKorttiPakkaan(g, p);
+                    poistettavat.add(g);
+                    k.poistaKortti(g);
+                    
                     uudetKortit++;
                 }
             }
             for (int i = 0; i < uudetKortit; i++) {
                 jaaKortti(k, p);
+            }
+            for(Kortti c:poistettavat){
+                p.lisaaKortti(c);
             }
         }
     }

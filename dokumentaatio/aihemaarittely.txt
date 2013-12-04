@@ -1,13 +1,7 @@
 Aihe: Pokeripeli
-RAY:n pokeripeliautomaatteja muistuttava peli. Pelaajalla on aluksi esim. viisi euroa alkupääomaa, jolla peliä voi pelata panostamalla jokaiseen pelikertaan pelaajan haluaman rahasumman 20 sentistä euroon. Panoksen suuruus vaikuttaa voittosummien suuruuteen. Pelillä on virtuaalinen kassa, joka täyttyy tai tyhjenee pelattujen pelien myötä ja pelaajan voitoista riippuen ja pysyy samana pelien välillä. Pelin kassassa olevan rahan määrä vaikuttaa voittotodennäköisyyksiin - mitä vähemmän kassassa on rahaa, sitä epätodennäköisemmäksi voittaminen muuttuu, ja mitä enemmän kassassa on rahaa, sitä avokätisemmin peli jakaa myös suuria voittoja.
+RAY:n pokeripeliautomaatteja muistuttava peli. Pelaajalla on aluksi esim. viisi euroa alkupääomaa, jolla peliä voi pelata panostamalla jokaiseen pelikertaan pelaajan haluaman rahasumman 20 sentistä euroon. Panoksen suuruus vaikuttaa voittosummien suuruuteen.
 
 Pelaajan toiminnot:
 *Panoksen valitseminen - pelaaja voi ennen jokaista peliä valita 20, 40, 60, 80 sentin tai 1 euron suuruisen panoksen.
 *Aloituskäden korttien lukitseminen - pelaaja voi valita jaetuista korteista 0-5 korttia, jotka lukitaan, eli joiden tilalle ei seuraavasta kädestä jaeta uutta korttia.
 *Tuplaus - voiton jälkeen pelaaja voi yrittää tuplata voittonsa arvaamalla, onko yksittäinen korttipakasta vedetty kortti iso vai pieni.
-
-Koneen toiminnot:
-*Voittotodennäköisyydet - ennen jokaista jaettavaa kättä kone laskee kassassa olevan rahamäärän perusteella todennäköisyyden jokaiselle voittavalle kädelle, joka perustuu osittain voittokäsien todelliselle todennäköisyydelle kuitenkin siten, että kassan tyhjetessä voiton todennäköisyys lähestyy nollaa ja kassan ollessa lähes täysi voittokäden todennäköisyys lähestyy yhtä. Kone siis pyrkii pitämään kassassa olevan rahamäärän tasaisena varioimalla voittotodennäköisyyksiä.
-*Aloituskäsi - Tietyllä todennäköisyydellä kone voi jakaa aloituskädessä jo valmiin voittokäden, kuten kaksi paria tai kolmoset, tai houkuttelevan käden, kuten parin tai yhtä vaille suoran.
-*Toinen käsi - Kone laskee lukittujen korttien ja kassassa olevan rahamäärän perusteella sellaisen suotuisan käden, jolla pelaaja joko häviää tai voittaa tietyllä korttikombinaatiolla.
-*Tuplaus - Kone laskee pelaajan tekemän valinnan (suuri vai pieni) jälkeen, onko suotuisampaa antaa pelaajan voittaa vai hävitä tuplaus. Jokainen onnistunut tuplaus vähentää seuraavan tuplauksen todennäköisyyttä.
