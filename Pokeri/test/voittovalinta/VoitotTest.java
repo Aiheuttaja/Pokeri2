@@ -207,4 +207,16 @@ public class VoitotTest {
         assertEquals(1.0,tarkastaja.rahat(),0.1);
     }
     
+    @Test
+    public void eiIsompaaPanostaKuinOnRahaa(){
+        this.tarkastaja.otaRahaa();
+        this.tarkastaja.kasvataPanosta();
+        this.tarkastaja.kasvataPanosta();
+        this.tarkastaja.kasvataPanosta();
+        //Rahaa oli jäljellä koneessa vain 80 senttiä, joten seuraavalla kasvatuksella palataan takaisin 20 senttiin
+        this.tarkastaja.kasvataPanosta();
+        
+        assertEquals(0.2,tarkastaja.panos(),0.1);
+    }
+    
 }

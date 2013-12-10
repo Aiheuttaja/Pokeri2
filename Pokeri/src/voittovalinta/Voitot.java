@@ -86,7 +86,7 @@ public class Voitot {
     }
 
     public void kasvataPanosta() {
-        if (this.panos == 1.0) {
+        if (this.panos == 1.0 || this.panos + 0.2 > this.rahat) {
             this.panos = 0.2;
         } else {
             this.panos = this.panos + 0.2;
@@ -109,8 +109,13 @@ public class Voitot {
         return this.rahat;
     }
     
-    public void lisaaRahaa(double rahat){
-        this.rahat+=rahat;
+    public void lisaaRahaa(){
+        double lisattava = 0.2;
+        this.rahat=this.rahat+lisattava;
+    }
+    
+    public void otaRahaa(){
+        this.rahat=this.rahat-this.panos;
     }
 
     /**

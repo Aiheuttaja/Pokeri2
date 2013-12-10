@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pokeri;
+package kayttoliittyma;
 
-import kayttoliittyma.Pokeripeli;
 import kortit.Kasi;
 import kortit.Korttipakka;
 import voittovalinta.Jakaja;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -19,8 +19,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pokeripeli pokeripeli = new Pokeripeli();
-        pokeripeli.pelaa();
+        Kayttoliittyma kayttis = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttis);
         
     }
 }
