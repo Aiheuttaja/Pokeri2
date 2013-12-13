@@ -1,0 +1,7 @@
+Aihe: Pokeripeli
+RAY:n pokeripeliautomaatteja muistuttava peli. Pelaajalla on aluksi esim. viisi euroa alkup‰‰omaa, jolla peli‰ voi pelata panostamalla jokaiseen pelikertaan pelaajan haluaman rahasumman 20 sentist‰ euroon. Panoksen suuruus vaikuttaa voittosummien suuruuteen.
+
+Pelaajan toiminnot:
+*Panoksen valitseminen - pelaaja voi ennen jokaista peli‰ valita 20, 40, 60, 80 sentin tai 1 euron suuruisen panoksen.
+*Aloitusk‰den korttien lukitseminen - pelaaja voi valita jaetuista korteista 0-5 korttia, jotka lukitaan, eli joiden tilalle ei seuraavasta k‰dest‰ jaeta uutta korttia.
+*Tuplaus - voiton j‰lkeen pelaaja voi yritt‰‰ tuplata voittonsa arvaamalla, onko yksitt‰inen korttipakasta vedetty kortti iso vai pieni.
